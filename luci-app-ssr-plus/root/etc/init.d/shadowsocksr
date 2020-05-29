@@ -76,7 +76,7 @@ get_host_ip() {
 clean_log() {
 	logsnum=$(cat /tmp/ssrplus.log 2>/dev/null | wc -l)
 	[ "$logsnum" -gt 1000 ] && {
-		echo "$(date "+%Y-%m-%d %H:%M:%S") ÈÕÖ¾ÎÄ¼þ¹ý³¤£¬Çå¿Õ´¦Àí£¡" >/tmp/ssrplus.log
+		echo "$(date "+%Y-%m-%d %H:%M:%S") ï¿½ï¿½Ö¾ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ´ï¿½ï¿½ï¿½ï¿½ï¿½" >/tmp/ssrplus.log
 	}
 }
 
@@ -313,15 +313,15 @@ start_redir_tcp() {
 	esac
 	local kcp_enable=$(uci_get_by_name $GLOBAL_SERVER kcp_enable 0)
 	if [ "$kcp_enable" == "1" ]; then
-		[ ! -f "/usr/bin/kcptun-client" ] && return 1
-		local kcp_str=$(/usr/bin/kcptun-client -v | grep kcptun | wc -l)
+		[ ! -f "/usr/bin/kcptun-c" ] && return 1
+		local kcp_str=$(/usr/bin/kcptun-c -v | grep kcptun | wc -l)
 		[ "0" == "$kcp_str" ] && return 1
 		local kcp_port=$(uci_get_by_name $GLOBAL_SERVER kcp_port)
 		local server_port=$(uci_get_by_name $GLOBAL_SERVER server_port)
 		local password=$(uci_get_by_name $GLOBAL_SERVER kcp_password)
 		local kcp_param=$(uci_get_by_name $GLOBAL_SERVER kcp_param)
 		[ "$password" != "" ] && password="--key "$password
-		service_start /usr/bin/kcptun-client \
+		service_start /usr/bin/kcptun-c \
 		-r $kcp_server:$kcp_port \
 		-l :$server_port $password $kcp_param
 		kcp_enable_flag=1

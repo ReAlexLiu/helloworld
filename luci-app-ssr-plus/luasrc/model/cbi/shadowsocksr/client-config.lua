@@ -454,8 +454,8 @@ o.datatype = "port"
 o.default = 1234
 o.rmempty = false
 
-if nixio.fs.access("/usr/bin/kcptun-client") then
-kcp_enable = s:option(Flag, "kcp_enable", translate("KcpTun Enable"), translate("bin:/usr/bin/kcptun-client"))
+if nixio.fs.access("/usr/bin/kcptun-c") then
+kcp_enable = s:option(Flag, "kcp_enable", translate("KcpTun Enable"), translate("bin:/usr/bin/kcptun-c"))
 kcp_enable.rmempty = true
 kcp_enable.default = "0"
 kcp_enable:depends("type", "ssr")
@@ -465,7 +465,7 @@ o = s:option(Value, "kcp_port", translate("KcpTun Port"))
 o.datatype = "port"
 o.default = 4000
 function o.validate(self, value, section)
-local kcp_file="/usr/bin/kcptun-client"
+local kcp_file="/usr/bin/kcptun-c"
 local enable = kcp_enable:formvalue(section) or kcp_enable.disabled
 if enable == kcp_enable.enabled then
 if not nixio.fs.access(kcp_file) then

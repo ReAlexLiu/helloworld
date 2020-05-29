@@ -151,8 +151,8 @@ msgstr "服务端配置"
 msgid "KcpTun Enable"
 msgstr "KcpTun 启用"
 
-msgid "bin:/usr/bin/kcptun-client"
-msgstr "二进制文件：/usr/bin/kcptun-client"
+msgid "bin:/usr/bin/kcptun-c"
+msgstr "二进制文件：/usr/bin/kcptun-c"
 
 msgid "KcpTun Port"
 msgstr "KcpTun 端口"
@@ -164,7 +164,7 @@ msgid "KcpTun Password"
 msgstr "KcpTun 密码"
 
 msgid "Haven't a Kcptun executable file"
-msgstr "不存在Kcptun可执行文件，请下载Kcptun可执行文件并改名放入/usr/bin/kcptun-client"
+msgstr "不存在Kcptun可执行文件，请下载Kcptun可执行文件并改名放入/usr/bin/kcptun-c"
 
 msgid "Not a Kcptun executable file"
 msgstr "Kcptun可执行文件格式不正确，请确认是否正确下载了路由器对应的可执行文件"

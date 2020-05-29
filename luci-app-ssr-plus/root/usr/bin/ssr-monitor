@@ -103,12 +103,12 @@ while [ "1" == "1" ]; do #死循环
 	fi
 	#kcptun
 	if [ "$kcp_process" -gt 0 ]; then
-		icount=$(busybox ps -w | grep kcptun-client | grep -v grep | wc -l)
+		icount=$(busybox ps -w | grep kcptun-c | grep -v grep | wc -l)
 		if [ "$icount" -lt "$kcp_process" ]; then #如果进程挂掉就重启它
 			logger -t "$NAME" "ssr kcptun error.restart!"
 			echo "$(date "+%Y-%m-%d %H:%M:%S") ssr kcptun error.restart!" >>/tmp/ssrplus.log
-			killall -q -9 kcptun-client
-			(/usr/bin/kcptun-client -r $server:$kcp_port -l :$server_port $password $kcp_param &)
+			killall -q -9 kcptun-c
+			(/usr/bin/kcptun-c -r $server:$kcp_port -l :$server_port $password $kcp_param &)
 		fi
 	fi
 	#localsocks

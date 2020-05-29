@@ -22,7 +22,7 @@ font_off = [[</font>]]
 bold_on = [[<strong>]]
 bold_off = [[</strong>]]
 local kcptun_version=translate("Unknown")
-local kcp_file="/usr/bin/kcptun-client"
+local kcp_file="/usr/bin/kcptun-c"
 if not nixio.fs.access(kcp_file) then
 	kcptun_version=translate("Not exist")
 else
@@ -69,7 +69,7 @@ if luci.sys.call("busybox ps -w | grep ssr-local | grep -v ssr-socksdns |grep -v
 	sock5_run=1
 end
 
-if luci.sys.call("pidof kcptun-client >/dev/null") == 0 then
+if luci.sys.call("pidof kcptun-c >/dev/null") == 0 then
 	kcptun_run=1
 end
 
@@ -130,7 +130,7 @@ else
 	s.value = translate("Not Running")
 end
 
-if nixio.fs.access("/usr/bin/kcptun-client") then
+if nixio.fs.access("/usr/bin/kcptun-c") then
 	s=m:field(DummyValue,"kcp_version",translate("KcpTun Version"))
 	s.rawhtml = true
 	s.value =kcptun_version
